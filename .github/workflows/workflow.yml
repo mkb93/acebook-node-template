@@ -45,7 +45,7 @@ name: Deploy Acebook to AWS
 
 on:
   push:
-    branches: [ main ]
+    branches: [ git_action ]
 
 jobs:
   test:
