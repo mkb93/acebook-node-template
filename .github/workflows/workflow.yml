@@ -1,0 +1,40 @@
+name: Deploy Blog
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      #   with:
+      #   with:
+      #     path: |
+      #       public
+      #       .cache
+      #       node_modules
+      #     key: ${{ runner.os }}-gatsby-alexhyett-site-build-${{ github.run_id }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-gatsby-alexhyett-site-build-      node-version: 12
+      # - name: Caching Gatsby
+      #   id: gatsby-cache-build
+      #   uses: actions/cache@v2
+    
+      - name: Install dependencies
+        run: npm install
+      # - name: Run Lint
+      #   run: yarn run lint
+      - name: Build Website
+        run: npm run build
+      - name: Set AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-2
+      - name: Copy to S3
+        run: aws s3 sync ./build/. s3://cavalieri-acebookproject
