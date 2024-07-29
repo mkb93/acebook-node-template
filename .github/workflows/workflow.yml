@@ -1,91 +1,47 @@
-name: Deploy Blog
+name: Build and Test
 
 on:
   push:
-    branches:
-      - git_action
+    branches: ['git_action']
+  pull_request:
+    branches: ['git_action']
+
 jobs:
-   build:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        mongodb-version: ['6.0']
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
+    - uses: actions/checkout@v3
 
-          path: |
-            public
-            .cache
-            node_modules
-    #       # key: ${{ runner.os }}-gatsby-alexhyett-site-build-${{ github.run_id }}
-    #       # restore-keys: |
-    #       #   ${{ runner.os }}-gatsby-alexhyett-site-build-      node-version: 18
-      - name: Caching Gatsby
-        id: gatsby-cache-build
-        uses: actions/cache@v4
-    
-      - name: Install dependencies
-        run: npm install
-      - name: Run Lint
-        run: yarn run lint
-      - name: app.js
-        run: npm start
-      - name: Set AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-2
-      - name: Copy to S3
-        run: aws s3 sync ./build/. s3://cavalieri-acebookproject
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
 
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.10.0
+      with:
+        mongodb-version: ${{ matrix.mongodb-version }}
 
+    - name: Cypress run
+      uses: cypress-io/github-action@v6
+      with:
+        start: npm start
+        wait-on: http://localhost:3000
 
-# name: Deploy Acebook to AWS
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
 
-# on:
-#   push:
-#     branches: [ git_action ]
-
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
-    
-#     steps:
-#     - uses: actions/checkout@v4
-    
-#     - name: Use Node.js
-#       uses: actions/setup-node@v4
-#       with:
-#         node-version: '20'
-        
-#     - name: Install dependencies
-#       run: npm start
-      
-#     - name: Run tests
-#       run: |
-#         npm run lint
-#         npm run test:unit
-#         npm run test:integration
-
-#   deploy:
-#     needs: test
-#     runs-on: ubuntu-latest
-    
-#     steps:
-#     - uses: actions/checkout@v4
-
-#     - name: Configure AWS credentials
-#       uses: aws-actions/configure-aws-credentials@v1
-#       with:
-#         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#         aws-region: eu-west-2
-
-#     - name: Upload to S3
-#       run: |
-#         aws s3 sync . s3://cavalieri-acebookproject --exclude '.git/*' --exclude 'node_modules/*' --delete
-
-# - name: Deploy to EC2
-#   run: |
-#     aws ec2 describe-instances --filters "Name=tag:DeployTarget,Values=Acebook" --query "Reservations[*].Instances[*].InstanceId" --output text | xargs -I {} aws ssm send-command --instance-ids {} --document-name "AWS-RunShellScript" --parameters commands=["cd /path/to/acebook","git pull","npm install","pm2 restart acebook"]
+    - name: Deploy to S3
+      run: |
+        aws s3 sync . s3://${{ secrets.cavalieri-acebookproject}} --exclude ".git/*" --exclude "node_modules/*" --delete
