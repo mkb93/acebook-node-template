@@ -3,9 +3,9 @@ name: Deploy Blog
 on:
   push:
     branches:
-      - main
+      - git_action
 jobs:
-  build:
+   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
