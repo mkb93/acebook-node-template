@@ -1,16 +1,16 @@
-name: Deploy Blog
+# name: Deploy Blog
 
-on:
-  push:
-    branches:
-      - git_action
-jobs:
-   build:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+# on:
+#   push:
+#     branches:
+#       - git_action
+# jobs:
+#    build:
+#     runs-on: ubuntu-latest
+#     timeout-minutes: 10
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: actions/setup-node@v2
       #   with:
       #   with:
       #     path: |
@@ -24,17 +24,68 @@ jobs:
       #   id: gatsby-cache-build
       #   uses: actions/cache@v2
     
-      - name: Install dependencies
-        run: npm install
-      # - name: Run Lint
-      #   run: yarn run lint
-      - name: app.js
-        run: npm start
-      - name: Set AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-2
-      - name: Copy to S3
-        run: aws s3 sync ./build/. s3://cavalieri-acebookproject
+      # - name: Install dependencies
+      #   run: npm install
+      # # - name: Run Lint
+      # #   run: yarn run lint
+      # - name: app.js
+      #   run: npm start
+      # - name: Set AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: eu-west-2
+      # - name: Copy to S3
+      #   run: aws s3 sync ./build/. s3://cavalieri-acebookproject
+
+
+
+name: Deploy Acebook to AWS
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run tests
+      run: |
+        npm run lint
+        npm run test:unit
+        npm run test:integration
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-2
+
+    - name: Upload to S3
+      run: |
+        aws s3 sync . s3://cavalieri-acebookproject --exclude '.git/*' --exclude 'node_modules/*' --delete
+
+    # - name: Deploy to EC2
+    #   run: |
+    #     aws ec2 describe-instances --filters "Name=tag:DeployTarget,Values=Acebook" --query "Reservations[*].Instances[*].InstanceId" --output text | xargs -I {} aws ssm send-command --instance-ids {} --document-name "AWS-RunShellScript" --parameters commands=["cd /path/to/acebook","git pull","npm install","pm2 restart acebook"]
