@@ -45,7 +45,7 @@ jobs:
     # - name: Deploy to S3
     #   run: |
     #     aws s3 sync . s3://${{ secrets.cavalieri-acebookproject}} --exclude ".git/*" --exclude "node_modules/*" --delete
-    jobs:
+ 
   deploy:
     runs-on: ubuntu-latest
     steps:
