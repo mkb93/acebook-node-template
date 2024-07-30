@@ -46,7 +46,7 @@ jobs:
     - name: Deploy to S3
       run: |
         aws s3 sync . s3://${{ secrets.AWS_BUCKET_NAME }} --exclude ".git/*" --exclude "node_modules/*" --delete
-
-        Static website hosting enabled: Yes
-        Index document: index.html
-        Error document: error.html
+    
+    - name: Configure S3 Bucket for Static Website Hosting
+      run: |
+        aws s3 website s3://${{ secrets.AWS_BUCKET_NAME }} --index-document index.hbs --error-document error.hbs
