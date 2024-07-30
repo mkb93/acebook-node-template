@@ -46,6 +46,7 @@ jobs:
     - name: Deploy to S3
       run: |
         aws s3 sync . s3://${{ secrets.AWS_BUCKET_NAME }} --exclude ".git/*" --exclude "node_modules/*" --delete
+        npm start
     
     - name: Configure S3 Bucket for Static Website Hosting
       run: |
