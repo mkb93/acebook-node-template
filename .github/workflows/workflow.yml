@@ -32,11 +32,11 @@ jobs:
       with:
         mongodb-version: ${{ matrix.mongodb-version }}
 
-    # - name: Cypress run
-    #   uses: cypress-io/github-action@v6
-    #   with:
-    #     start: npm run start:test
-    #     wait-on: http://localhost:3030
+    - name: Cypress run
+      uses: cypress-io/github-action@v6
+      with:
+        start: npm run start:test
+        wait-on: http://localhost:3030
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
