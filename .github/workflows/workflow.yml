@@ -45,4 +45,4 @@ jobs:
 
     - name: Deploy to S3
       run: |
-        aws s3 sync . s3://${{ aws-s3-bucket }} --exclude ".git/*" --exclude "node_modules/*" --delete
+        aws s3 sync . s3://${{ ssecrets.AWS_BUCKET_NAME }} --exclude ".git/*" --exclude "node_modules/*" --delete
