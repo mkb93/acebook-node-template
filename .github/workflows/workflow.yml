@@ -35,25 +35,14 @@ jobs:
         start: npm run start:test
         wait-on: http://localhost:3030
 
-    # - name: Configure AWS Credentials
-    #   uses: aws-actions/configure-aws-credentials@v2
-    #   with:
-    #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #     aws-region: eu-west-2
-
-    # - name: Deploy to S3
-    #   run: |
-    #     aws s3 sync . s3://${{ secrets.cavalieri-acebookproject}} --exclude ".git/*" --exclude "node_modules/*" --delete
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@git_action
-    - uses: mkb93/acebook-node-template@git_action
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
       with:
-        args: --acl public-read --follow-symlinks --delete --exclude '.git*/*'
-      env:
-        AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-s3-bucket: ${{ secrets.AWS_BUCKET_NAME }}
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-2
+
+    - name: Deploy to S3
+      run: |
+        aws s3 sync . s3://${{ aws-s3-bucket }} --exclude ".git/*" --exclude "node_modules/*" --delete
