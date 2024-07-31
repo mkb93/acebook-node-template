@@ -37,7 +37,7 @@ jobs:
       with:
         start: npm run start:test
         wait-on: http://localhost:3030
-jobs:   
+jobs1:   
   deploy:
 
     if: github.ref == 'refs/heads/main'
