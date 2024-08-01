@@ -1,4 +1,8 @@
 #!/bin/bash
-# Stopping existing node servers
-echo "Stopping any existing node servers"
-pkill node || true
+set -e
+
+# Stop the application
+pm2 stop all || true
+pm2 delete all || true
+
+echo "Application stopped"
