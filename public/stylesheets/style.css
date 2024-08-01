@@ -6,3 +6,25 @@ body {
 a {
   color: #00B7FF;
 }
+
+/* CSS for the title */
+.title {
+  font-size: 2.5em; /* Larger font size for the title */
+  color: #2c3e50; /* Dark blue color */
+  text-align: center; /* Center the title */
+  margin-bottom: 20px; /* Space below the title */
+  font-family: 'Arial', sans-serif; /* Font family */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+}
+
+/* CSS for the paragraph */
+p {
+  font-size: 1.2em; /* Slightly larger font size for the paragraph */
+  color: #34495e; /* Grayish-blue color */
+  text-align: center; /* Center the paragraph */
+  line-height: 1.6; /* Improve readability with line spacing */
+  margin: 0 auto; /* Center the paragraph */
+  max-width: 600px; /* Limit the width of the paragraph */
+  padding: 10px; /* Padding around the paragraph */
+  font-family: 'Arial', sans-serif; /* Font family */
+}
