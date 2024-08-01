@@ -28,3 +28,60 @@ p {
   padding: 10px; /* Padding around the paragraph */
   font-family: 'Arial', sans-serif; /* Font family */
 }
+
+
+
+
+
+
+
+/* General body styles */
+body {
+  background-color: #f4f4f4; /* Light gray background */
+  color: #333; /* Dark text color */
+  font-family: 'Arial', sans-serif; /* Font family */
+  padding: 20px; /* Padding around the body */
+  margin: 0; /* Remove default margin */
+}
+
+/* Styles for the form */
+form {
+  background-color: #fff; /* White background for the form */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  padding: 20px; /* Padding inside the form */
+  margin: 20px 0; /* Space around the form */
+}
+
+/* Styles for input elements */
+input[type="submit"] {
+  background-color: #007BFF; /* Primary button color */
+  color: white; /* Text color for button */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 15px; /* Padding inside the button */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Change cursor to pointer */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Styles for input hover effect */
+input[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Additional styles for body content */
+h1, h2, h3 {
+  color: #2c3e50; /* Darker color for headings */
+  text-align: center; /* Center align headings */
+}
+
+/* Styles for any additional body content */
+body > div {
+  max-width: 800px; /* Maximum width for content */
+  margin: 0 auto; /* Center align content */
+  padding: 20px; /* Padding around content */
+  background-color: #fff; /* White background for content */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
