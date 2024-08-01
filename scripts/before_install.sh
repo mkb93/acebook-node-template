@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 # Update package manager and install Node.js
 echo "Installing node.js"
 sudo yum update -y
