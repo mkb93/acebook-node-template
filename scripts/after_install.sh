@@ -8,4 +8,4 @@ npm ci
 
 # Build the application if necessary
 echo "Building the application"
-npm run start
+npm run buil
