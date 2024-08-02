@@ -2,9 +2,9 @@ name: Build and Deploy
 
 on:
   push:
-    branches: ['git_action']
+    branches: ['main']
   pull_request:
-    branches: ['git_action']
+    branches: ['main']
 
 jobs:
   build:
@@ -32,15 +32,15 @@ jobs:
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
 
-      # - name: Cypress run
-      #   uses: cypress-io/github-action@v6
-      #   with:
-      #     start: npm run start:test
-      #     wait-on: http://localhost:3030
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run start:test
+          wait-on: http://localhost:3030
 
   deploy:
     needs: build  # Fixed indentation here
-    if: github.ref == 'refs/heads/git_action'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
