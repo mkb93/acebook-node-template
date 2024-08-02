@@ -135,3 +135,91 @@ h1 {
 .title {
   margin-top: 50px; /* Space from the top */
 }
+
+
+
+
+/* postpage */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9; /* Light background color */
+  color: #333; /* Dark text for better readability */
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #3b5998; /* Facebook-like blue */
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+ul.posts {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0;
+  max-width: 600px; /* Limit the width of the posts */
+  margin: 0 auto; /* Center the list */
+}
+
+ul.posts li {
+  background-color: #fff; /* White background for posts */
+  border: 1px solid #ddd; /* Light border for posts */
+  border-radius: 5px; /* Rounded corners */
+  padding: 15px;
+  margin-bottom: 15px; /* Spacing between posts */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+ul.posts li:hover {
+  background-color: #f1f1f1; /* Slightly darker background on hover */
+}
+
+.new-post-link {
+  display: block; /* Make the link a block element */
+  text-align: center; /* Center the text */
+  margin: 20px auto; /* Center the link */
+  padding: 10px 15px;
+  background-color: #3b5998; /* Background color */
+  color: white; /* White text */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded corners */
+  max-width: 200px; /* Limit width */
+}
+
+.new-post-link:hover {
+  background-color: #365e8e; /* Darker blue on hover */
+}
+
+.logout-container {
+  text-align: right; /* Align logout button to the right */
+  margin-top: 20px; /* Spacing above */
+}
+
+.logout-button {
+  background-color: #ff4757; /* Red background for logout */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 15px; /* Padding for button */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.logout-button:hover {
+  background-color: #ff6b81; /* Lighter red on hover */
+}
+
+.like-button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.like-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+

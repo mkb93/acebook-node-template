@@ -1,9 +1,20 @@
 <h1>Timeline</h1>
 <ul class="posts">
   {{#each posts}}
-  <li>{{this.message}}</li> 
-  <li>{{this.likes}} likes</li>
+  <li>
+      <p>{{this.message}}</p>
+      <p>{{this.likes}} likes</p>
+      <form action="/posts/{{this._id}}/like" method="post">
+          <input type="submit" value="Like" class="like-button">
+      </form>
+  </li> 
   {{/each}}
 </ul>
 
 <a class="new-post-link" href="/posts/new">New post</a>
+
+<div class="logout-container">
+    <form action='/sessions?_method=DELETE' method='POST'>
+        <input type="submit" value="Log Out" class="logout-button">
+    </form>
+</div>
