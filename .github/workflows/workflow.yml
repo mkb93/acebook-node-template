@@ -2,6 +2,7 @@ name: Build and Deploy
 
 on:
   push:
+  
     branches: ['main']
   pull_request:
     branches: ['main']
@@ -16,6 +17,7 @@ jobs:
         mongodb-version: ['6.0']
 
     steps:
+    
       - uses: actions/checkout@v3
 
       - name: Install dependencies
@@ -41,6 +43,7 @@ jobs:
   deploy:
     needs: build  # Fixed indentation here
     if: github.ref == 'refs/heads/main'
+    
     runs-on: ubuntu-latest
 
     steps:
@@ -74,5 +77,3 @@ jobs:
             --deployment-group-name cavalieri-acebook-codeDeploy \
             --s3-location bucket=${{ secrets.AWS_BUCKET_NAME }},bundleType=zip,key=deploy.zip \
             --file-exists-behavior OVERWRITE
-
-
