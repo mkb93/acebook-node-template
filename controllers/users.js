@@ -9,8 +9,10 @@ const UsersController = {
     const user = new User(req.body);
     user.save((err) => {
       if (err) {
-        throw err;
-      }
+        console.error("Error creating user:", err); // Log the error
+        return res.redirect("/users/new"); // Redirect back to the signup form on error
+    }
+      console.log("user created:", user); // Log the created user
       res.status(201).redirect("/posts");
     });
   },
