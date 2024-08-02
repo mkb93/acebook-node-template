@@ -1,87 +1,137 @@
-body {
+/* body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
-}
-
-/* CSS for the title */
-.title {
-  font-size: 2.5em; /* Larger font size for the title */
-  color: #2c3e50; /* Dark blue color */
-  text-align: center; /* Center the title */
-  margin-bottom: 20px; /* Space below the title */
-  font-family: 'Arial', sans-serif; /* Font family */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
-}
-
-/* CSS for the paragraph */
-p {
-  font-size: 1.2em; /* Slightly larger font size for the paragraph */
-  color: #34495e; /* Grayish-blue color */
-  text-align: center; /* Center the paragraph */
-  line-height: 1.6; /* Improve readability with line spacing */
-  margin: 0 auto; /* Center the paragraph */
-  max-width: 600px; /* Limit the width of the paragraph */
-  padding: 10px; /* Padding around the paragraph */
-  font-family: 'Arial', sans-serif; /* Font family */
-}
+} */
 
 
+/* styles.css */
 
-
-
-
-
-/* General body styles */
 body {
-  background-color: #f4f4f4; /* Light gray background */
-  color: #333; /* Dark text color */
-  font-family: 'Arial', sans-serif; /* Font family */
-  padding: 20px; /* Padding around the body */
-  margin: 0; /* Remove default margin */
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
 }
 
-/* Styles for the form */
+h1.title {
+    color: #4A90E2;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #D95B5B;
+    margin-top: 40px;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    color: #555;
+}
+
 form {
-  background-color: #fff; /* White background for the form */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-  padding: 20px; /* Padding inside the form */
-  margin: 20px 0; /* Space around the form */
+    background-color: #ffffff;
+    border-radius: 28px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Styles for input elements */
+label {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="email"],
+input[type="password"],
 input[type="submit"] {
-  background-color: #007BFF; /* Primary button color */
-  color: white; /* Text color for button */
-  border: none; /* Remove default border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px 15px; /* Padding inside the button */
-  font-size: 16px; /* Font size */
-  cursor: pointer; /* Change cursor to pointer */
-  transition: background-color 0.3s; /* Smooth transition */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
-/* Styles for input hover effect */
+input[type="submit"] {
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
 input[type="submit"]:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+    background-color: #357ABD;
 }
 
-/* Additional styles for body content */
-h1, h2, h3 {
-  color: #2c3e50; /* Darker color for headings */
-  text-align: center; /* Center align headings */
+@media (max-width: 500px) {
+    h1.title {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"] {
+        font-size: 14px;
+    }
 }
 
-/* Styles for any additional body content */
-body > div {
-  max-width: 800px; /* Maximum width for content */
-  margin: 0 auto; /* Center align content */
-  padding: 20px; /* Padding around content */
-  background-color: #fff; /* White background for content */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+
+
+
+
+
+/* 
+logaut/Users/layout.hbs */
+
+body {
+  font-family: Arial, sans-serif; /* Use a modern font */
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.logout-container {
+  position: absolute; /* Allow positioning the button */
+  top: 20px; /* Adjust distance from the top */
+  right: 20px; /* Adjust distance from the right */
+}
+
+.logout-button {
+  background-color: #ff6b6b; /* Pastel red color for the button */
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 15px; /* Padding for better touch target */
+  cursor: pointer; /* Change cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.logout-button:hover {
+  background-color: #ff4c4c; /* Darker red on hover */
+}
+
+h1 {
+  text-align: center; /* Center the main title */
+  color: #333; /* Dark gray color for text */
+}
+
+.title {
+  margin-top: 50px; /* Space from the top */
 }

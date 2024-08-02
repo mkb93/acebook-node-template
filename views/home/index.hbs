@@ -12,5 +12,24 @@
 <body>
     <h1 class="title">{{title}}</h1>
     <p>Welcome to {{title}}</p>
+
+    <h2>Sign Up</h2>
+    <form id="new-user-form" action="/users" method="post">
+        <label for="email">Email: </label>
+        <input id="email" type="email" name="email" value="" required>
+        <label for="password">Password: </label>
+        <input id="password" type="password" name="password" value="" required>
+        <input id="submit" type="submit" value="Submit">
+    </form>
+
+    <h2>Log In</h2>
+    <form id="new-session-form" action="/sessions" method="post">
+        <label for="email">Email: </label>
+        <input id="email" type="email" name="email" value="" required>
+        <label for="password">Password: </label>
+        <input id="password" type="password" name="password" value="" required>
+        <input id="submit" type="submit" value="Submit">
+    </form>
 </body>
 </html>
+
