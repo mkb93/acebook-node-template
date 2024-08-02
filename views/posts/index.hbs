@@ -7,6 +7,12 @@
       <form action="/posts/{{this._id}}/like" method="post">
           <input type="submit" value="Like" class="like-button">
       </form>
+      <form action="/posts/{{this._id}}/unlike" method="post" style="display: inline;">
+          <input type="submit" value="Unlike" class="unlike-button">
+      </form>
+      <form action="/posts/{{this._id}}/delete" method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this post?');">
+          <input type="submit" value="Delete" class="delete-button">
+      </form>
   </li> 
   {{/each}}
 </ul>

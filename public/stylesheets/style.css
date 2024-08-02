@@ -94,33 +94,20 @@ input[type="submit"]:hover {
 
 
 
-
-
-
-/* 
-logaut/Users/layout.hbs */
-
-body {
-  font-family: Arial, sans-serif; /* Use a modern font */
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9; /* Light background for contrast */
-}
-
 .logout-container {
-  position: absolute; /* Allow positioning the button */
-  top: 20px; /* Adjust distance from the top */
-  right: 20px; /* Adjust distance from the right */
+  position: absolute; 
+  top: 20px; 
+  right: 20px;
 }
 
 .logout-button {
-  background-color: #ff6b6b; /* Pastel red color for the button */
-  color: white; /* White text color */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px 15px; /* Padding for better touch target */
-  cursor: pointer; /* Change cursor on hover */
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  background-color: #ff6b6b; 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  padding: 10px 15px; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
 }
 
 .logout-button:hover {
@@ -143,37 +130,193 @@ h1 {
 
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f9f9f9; /* Light background color */
-  color: #333; /* Dark text for better readability */
+  background-color: #f9f9f9; 
+  color: #333; 
   margin: 0;
   padding: 20px;
 }
 
 h1 {
   text-align: center;
-  color: #3b5998; /* Facebook-like blue */
+  color: #3b5998; 
   font-size: 2.5em;
   margin-bottom: 20px;
 }
 
 ul.posts {
-  list-style-type: none; /* Remove bullet points */
+  list-style-type: none;
   padding: 0;
-  max-width: 600px; /* Limit the width of the posts */
-  margin: 0 auto; /* Center the list */
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 ul.posts li {
-  background-color: #fff; /* White background for posts */
-  border: 1px solid #ddd; /* Light border for posts */
-  border-radius: 5px; /* Rounded corners */
+  background-color: #fff; 
+  border: 1px solid #ddd; 
+  border-radius: 5px; 
   padding: 15px;
-  margin-bottom: 15px; /* Spacing between posts */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin-bottom: 15px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 ul.posts li:hover {
-  background-color: #f1f1f1; /* Slightly darker background on hover */
+  background-color: #f1f1f1; 
+}
+
+.new-post-link {
+  display: block;
+  text-align: center; 
+  margin: 20px auto;
+  padding: 10px 15px;
+  background-color: #3b5998;
+  color: white; 
+  text-decoration: none; 
+  border-radius: 5px;
+  max-width: 200px; 
+}
+
+.new-post-link:hover {
+  background-color: #365e8e; 
+}
+
+.logout-container {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.logout-button {
+  background-color: #ff4757; 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  padding: 10px 15px; 
+  cursor: pointer; 
+}
+
+.logout-button:hover {
+  background-color: #ff6b81; 
+}
+
+.like-button {
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 15px; 
+    cursor: pointer; 
+}
+
+.like-button:hover {
+    background-color: #45a049; 
+}
+
+
+#new-post-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+#new-post-form h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+
+label {
+  display: block;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none; 
+}
+
+
+input[type="text"]:focus {
+  border-color: #007bff; 
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25); 
+}
+
+
+.submit-button {
+  background-color: #007bff; 
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+  #new-post-form {
+    padding: 15px;
+  }
+
+  .submit-button {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+.like-button, .unlike-button, .delete-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.unlike-button {
+  background-color: #FF5722; 
+  
+}
+
+.delete-button {
+  background-color: #F44336; 
+}
+
+.new-post-link {
+  display: block;
+  margin: 20px 0;
+  font-weight: bold;
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.logout-button {
+  background-color: #f44336;
 }
 
 .new-post-link {
@@ -181,45 +324,12 @@ ul.posts li:hover {
   text-align: center; /* Center the text */
   margin: 20px auto; /* Center the link */
   padding: 10px 15px;
-  background-color: #3b5998; /* Background color */
+  background-color: #3B5998; /* Background color */
   color: white; /* White text */
   text-decoration: none; /* Remove underline */
   border-radius: 5px; /* Rounded corners */
   max-width: 200px; /* Limit width */
 }
-
 .new-post-link:hover {
-  background-color: #365e8e; /* Darker blue on hover */
+  background-color: #365E8E; /* Darker blue on hover */
 }
-
-.logout-container {
-  text-align: right; /* Align logout button to the right */
-  margin-top: 20px; /* Spacing above */
-}
-
-.logout-button {
-  background-color: #ff4757; /* Red background for logout */
-  color: white; /* White text */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px 15px; /* Padding for button */
-  cursor: pointer; /* Change cursor to pointer */
-}
-
-.logout-button:hover {
-  background-color: #ff6b81; /* Lighter red on hover */
-}
-
-.like-button {
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px 15px; /* Padding */
-    cursor: pointer; /* Pointer cursor on hover */
-}
-
-.like-button:hover {
-    background-color: #45a049; /* Darker green on hover */
-}
-

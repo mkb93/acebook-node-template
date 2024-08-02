@@ -1,5 +1,8 @@
 <form id="new-post-form" action="/posts" method="post">
-  <label for="message">Message: </label>
-  <input id="message" type="text" name="message" value="">
-  <input type="submit" value="Submit">
-</form> 
+  <h2>Create a New Post</h2>
+  <div class="form-group">
+    <label for="message">What's on your mind?</label>
+    <input id="message" type="text" name="message" placeholder="Type your message here..." required>
+  </div>
+  <button type="submit" class="submit-button">Submit</button>
+</form>
