@@ -16,6 +16,7 @@ jobs:
         mongodb-version: ['6.0']
 
     steps:
+    
       - uses: actions/checkout@v3
 
       - name: Install dependencies
@@ -74,5 +75,3 @@ jobs:
             --deployment-group-name cavalieri-acebook-codeDeploy \
             --s3-location bucket=${{ secrets.AWS_BUCKET_NAME }},bundleType=zip,key=deploy.zip \
             --file-exists-behavior OVERWRITE
-
-
